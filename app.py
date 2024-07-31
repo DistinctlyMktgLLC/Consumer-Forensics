@@ -32,7 +32,7 @@ def main():
                 "margin": "0px", 
                 "--hover-color": "#ff0000",
                 "color": "black",
-                "padding": "10px",
+                "padding": "15px 20px",  # Increased padding for wider appearance
                 "flex-grow": "1"
             },
             "nav-link-selected": {"background-color": "#ff0000", "color": "white"},
