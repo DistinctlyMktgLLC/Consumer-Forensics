@@ -49,8 +49,7 @@ def app():
     
     # Map visualization with tooltips
     tooltip = {
-        "html": "<b>Neighborhood:</b> {neighborhood_}<br/>"
-                "<b>City:</b> {city}<br/>"
+        "html": "<b>City:</b> {city}<br/>"
                 "<b>State:</b> {state_name}<br/>"
                 "<b>Kind of Person:</b> {kind_of_person}<br/>"
                 "<b>True Colors:</b> {true_colors}<br/>"

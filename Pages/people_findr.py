@@ -19,21 +19,22 @@ def app():
 
     st.sidebar.header("I want to understand People")
     
-    kind_of_person = st.sidebar.multiselect("Kind of Person", data_sampled.get('kind_of_person', []).dropna().unique(), help="Who they are - Kind of Person")
-    true_colors = st.sidebar.multiselect("True Colors", data_sampled.get('true_colors', []).dropna().unique(), help="What they think - True Colors")
-    their_reactions = st.sidebar.multiselect("Their Reactions", data_sampled.get('their_reactions', []).dropna().unique(), help="What they think - Their Reactions")
-    how_to_connect = st.sidebar.multiselect("How to Connect", data_sampled.get('how_to_connect', []).dropna().unique(), help="What's their value - How to Connect")
-    what_theyre_into = st.sidebar.multiselect("What they’re into", data_sampled.get('what_theyre_into', []).dropna().unique(), help="What's their value - What they’re into")
-    how_they_feel = st.sidebar.multiselect("How They Feel", data_sampled.get('how_they_feel', []).dropna().unique(), help="What's their value - How They Feel")
-    how_you_hook_them = st.sidebar.multiselect("How you hook them", data_sampled.get('how_you_hook_them', []).dropna().unique(), help="What's their value - How you hook them")
+    # Multiselects for filtering
+    kind_of_person = st.sidebar.multiselect("Kind of Person", data_sampled['kind_of_person'].dropna().unique(), help="Who they are - Kind of Person")
+    true_colors = st.sidebar.multiselect("True Colors", data_sampled['true_colors'].dropna().unique(), help="What they think - True Colors")
+    their_reactions = st.sidebar.multiselect("Their Reactions", data_sampled['their_reactions'].dropna().unique(), help="What they think - Their Reactions")
+    how_to_connect = st.sidebar.multiselect("How to Connect", data_sampled['how_to_connect'].dropna().unique(), help="What's their value - How to Connect")
+    what_theyre_into = st.sidebar.multiselect("What they’re into", data_sampled['what_theyre_into'].dropna().unique(), help="What's their value - What they’re into")
+    how_they_feel = st.sidebar.multiselect("How They Feel", data_sampled['how_they_feel'].dropna().unique(), help="What's their value - How They Feel")
+    how_you_hook_them = st.sidebar.multiselect("How you hook them", data_sampled['how_you_hook_them'].dropna().unique(), help="What's their value - How you hook them")
 
-    sign = st.sidebar.multiselect("Sign", data_sampled.get('sign', []).dropna().unique(), help="Demographic - Sign")
-    income = st.sidebar.multiselect("Income", data_sampled.get('income', []).dropna().unique(), help="Demographic - Income")
-    race = st.sidebar.multiselect("Race", data_sampled.get('race', []).dropna().unique(), help="Demographic - Race")
-    marstat = st.sidebar.multiselect("Marital Status", data_sampled.get('marstat', []).dropna().unique(), help="Demographic - Marital Status")
-    educ = st.sidebar.multiselect("Education", data_sampled.get('educ', []).dropna().unique(), help="Demographic - Education")
-    employ = st.sidebar.multiselect("Employment", data_sampled.get('employ', []).dropna().unique(), help="Demographic - Employment")
-    gender = st.sidebar.multiselect("Gender", data_sampled.get('gender', []).dropna().unique(), help="Demographic - Gender")
+    sign = st.sidebar.multiselect("Sign", data_sampled['sign'].dropna().unique(), help="Demographic - Sign")
+    income = st.sidebar.multiselect("Income", data_sampled['income'].dropna().unique(), help="Demographic - Income")
+    race = st.sidebar.multiselect("Race", data_sampled['race'].dropna().unique(), help="Demographic - Race")
+    marstat = st.sidebar.multiselect("Marital Status", data_sampled['marstat'].dropna().unique(), help="Demographic - Marital Status")
+    educ = st.sidebar.multiselect("Education", data_sampled['educ'].dropna().unique(), help="Demographic - Education")
+    employ = st.sidebar.multiselect("Employment", data_sampled['employ'].dropna().unique(), help="Demographic - Employment")
+    gender = st.sidebar.multiselect("Gender", data_sampled['gender'].dropna().unique(), help="Demographic - Gender")
 
     filtered_data = data_sampled.copy()
     
