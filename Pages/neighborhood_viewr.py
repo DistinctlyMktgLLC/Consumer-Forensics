@@ -2,23 +2,30 @@ import streamlit as st
 from modules.data_loader import load_data
 import pydeck as pdk
 
+def sample_data(data, fraction=0.5):
+    """Sample a cross-section of the data"""
+    return data.sample(frac=fraction, random_state=1)
+
 def app():
     st.title("Explore Neighborhoods")
-    st.markdown("Select a neighborhood to explore various metrics and details.")
+    st.write("**Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).")
+
+    # Load and sample data
     data = load_data('data/neighborhood_data.parquet')
+    data_sampled = sample_data(data, fraction=0.5)
     
     st.sidebar.header("I want to understand People")
     
-    kind_of_person = st.sidebar.multiselect("Kind of Person", data['Kind_of_Person'].dropna().unique(), help="Who they are - Kind of Person")
-    people_standard = st.sidebar.multiselect("People Standard", data['People_Standard'].dropna().unique(), help="Who they are - People Standard")
-    true_colors = st.sidebar.multiselect("True Colors", data['True_Colors'].dropna().unique(), help="What they think - True Colors")
-    their_reactions = st.sidebar.multiselect("Their Reactions", data['Their_Reactions'].dropna().unique(), help="What they think - Their Reactions")
-    how_to_connect = st.sidebar.multiselect("How to Connect", data['How_to_Connect'].dropna().unique(), help="What's their value - How to Connect")
-    what_theyre_into = st.sidebar.multiselect("What they’re into", data['What_theyre_into'].dropna().unique(), help="What's their value - What they’re into")
-    how_they_feel = st.sidebar.multiselect("How They Feel", data['How_They_Feel'].dropna().unique(), help="What's their value - How They Feel")
-    make_them_loyal = st.sidebar.multiselect("Make Them Loyal", data['Make_Them_Loyal'].dropna().unique(), help="What's their value - Make Them Loyal")
+    kind_of_person = st.sidebar.multiselect("Kind of Person", data_sampled['Kind_of_Person'].dropna().unique(), help="Who they are - Kind of Person")
+    people_standard = st.sidebar.multiselect("People Standard", data_sampled['People_Standard'].dropna().unique(), help="Who they are - People Standard")
+    true_colors = st.sidebar.multiselect("True Colors", data_sampled['True_Colors'].dropna().unique(), help="What they think - True Colors")
+    their_reactions = st.sidebar.multiselect("Their Reactions", data_sampled['Their_Reactions'].dropna().unique(), help="What they think - Their Reactions")
+    how_to_connect = st.sidebar.multiselect("How to Connect", data_sampled['How_to_Connect'].dropna().unique(), help="What's their value - How to Connect")
+    what_theyre_into = st.sidebar.multiselect("What they’re into", data_sampled['What_theyre_into'].dropna().unique(), help="What's their value - What they’re into")
+    how_they_feel = st.sidebar.multiselect("How They Feel", data_sampled['How_They_Feel'].dropna().unique(), help="What's their value - How They Feel")
+    make_them_loyal = st.sidebar.multiselect("Make Them Loyal", data_sampled['Make_Them_Loyal'].dropna().unique(), help="What's their value - Make Them Loyal")
 
-    filtered_data = data.copy()
+    filtered_data = data_sampled.copy()
     
     if kind_of_person:
         filtered_data = filtered_data[filtered_data['Kind_of_Person'].isin(kind_of_person)]
@@ -86,3 +93,6 @@ def app():
     )
 
     st.pydeck_chart(r)
+
+if __name__ == "__main__":
+    app()

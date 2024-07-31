@@ -2,27 +2,32 @@ import streamlit as st
 from modules.data_loader import load_data
 import pydeck as pdk
 
+def sample_data(data, fraction=0.5):
+    """Sample a cross-section of the data"""
+    return data.sample(frac=fraction, random_state=1)
+
 def app():
     st.title("Business Explorer")
-    st.markdown("Select a business type to explore business metrics and locations.")
+    st.write("**Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).")
     
-    # Load your data
+    # Load and sample data
     data = load_data('data/businesses.parquet')
+    data_sampled = sample_data(data, fraction=0.5)
     
     # Sidebar for filtering data
     st.sidebar.header("Filter Options")
     
-    kind_of_person = st.sidebar.multiselect("Kind of Person", data['Kind_of_Person'].dropna().unique(), help="Filter by Kind of Person")
-    true_colors = st.sidebar.multiselect("True Colors", data['True_Colors'].dropna().unique(), help="Filter by True Colors")
-    their_reactions = st.sidebar.multiselect("Their Reactions", data['Their_Reactions'].dropna().unique(), help="Filter by Their Reactions")
-    how_to_connect = st.sidebar.multiselect("How to Connect", data['How_to_Connect'].dropna().unique(), help="Filter by How to Connect")
-    what_theyre_into = st.sidebar.multiselect("What they’re into", data['What_theyre_into'].dropna().unique(), help="Filter by What they’re into")
-    how_they_feel = st.sidebar.multiselect("How They Feel", data['How_They_Feel'].dropna().unique(), help="Filter by How They Feel")
-    make_them_loyal = st.sidebar.multiselect("Make Them Loyal", data['Make_Them_Loyal'].dropna().unique(), help="Filter by Make Them Loyal")
+    kind_of_person = st.sidebar.multiselect("Kind of Person", data_sampled['Kind_of_Person'].dropna().unique(), help="Filter by Kind of Person")
+    true_colors = st.sidebar.multiselect("True Colors", data_sampled['True_Colors'].dropna().unique(), help="Filter by True Colors")
+    their_reactions = st.sidebar.multiselect("Their Reactions", data_sampled['Their_Reactions'].dropna().unique(), help="Filter by Their Reactions")
+    how_to_connect = st.sidebar.multiselect("How to Connect", data_sampled['How_to_Connect'].dropna().unique(), help="Filter by How to Connect")
+    what_theyre_into = st.sidebar.multiselect("What they’re into", data_sampled['What_theyre_into'].dropna().unique(), help="Filter by What they’re into")
+    how_they_feel = st.sidebar.multiselect("How They Feel", data_sampled['How_They_Feel'].dropna().unique(), help="Filter by How They Feel")
+    make_them_loyal = st.sidebar.multiselect("Make Them Loyal", data_sampled['Make_Them_Loyal'].dropna().unique(), help="Filter by Make Them Loyal")
     
-    business_types = st.sidebar.multiselect("Select Business Type", data['Business_Type'].dropna().unique())
+    business_types = st.sidebar.multiselect("Select Business Type", data_sampled['Business_Type'].dropna().unique())
     
-    filtered_data = data.copy()
+    filtered_data = data_sampled.copy()
     
     # Applying filters
     if business_types:
@@ -91,3 +96,6 @@ def app():
     )
 
     st.pydeck_chart(r)
+
+if __name__ == "__main__":
+    app()

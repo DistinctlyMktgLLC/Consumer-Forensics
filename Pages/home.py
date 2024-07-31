@@ -19,6 +19,6 @@ def show_home():
     2. Geographical Spread: The interactive map showcases the nationwide distribution of our survey respondents, allowing for region-specific insights.
     3. Demographic Variety: We have a diverse range of respondents across different income levels, and backgrounds.
 
-    Use the filters on the left to dive deeper into specific segments, demographics, or geographical areas.
+    **Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).
     """)
-    st.markdown("Dashboard powered by Distinct.ly. Data last updated: July 23 2024 1:05 pm EST")
+    st.markdown("Dashboard powered by Distinct.ly. Data last updated: July 30 2024 11:05 pm EST")
