@@ -11,7 +11,7 @@ def app():
     st.write("**Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).")
     
     # Load and sample data
-    data = load_data('data/businesses.parquet')
+    data = load_data('data/business_explor_data.parquet')
     data_sampled = sample_data(data, fraction=0.5)
     
     # Sidebar for filtering data

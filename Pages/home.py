@@ -21,4 +21,4 @@ def show_home():
 
     **Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).
     """)
-    st.markdown("Dashboard powered by Distinct.ly. Data last updated: July 30 2024 11:05 pm EST")
+    st.markdown("Dashboard powered by Distinct.ly. Data last updated: July 23 2024 1:05 pm EST")
