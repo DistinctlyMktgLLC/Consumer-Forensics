@@ -15,7 +15,7 @@ menu_pages = {
 }
 
 def main():
-    # Horizontal menu with original red hover and white text effect
+    # Horizontal menu with custom styling for even spacing and color changes
     selected = option_menu(
         menu_title=None,
         options=menu_items,
@@ -26,7 +26,15 @@ def main():
         styles={
             "container": {"padding": "0!important", "background-color": "#FFFFFF"},
             "icon": {"color": "black", "font-size": "20px"},
-            "nav-link": {"font-size": "18px", "text-align": "center", "margin": "0px", "--hover-color": "#ff0000"},
+            "nav-link": {
+                "font-size": "18px", 
+                "text-align": "center", 
+                "margin": "0px", 
+                "--hover-color": "#ff0000",
+                "color": "black",
+                "padding": "10px",
+                "flex-grow": "1"
+            },
             "nav-link-selected": {"background-color": "#ff0000", "color": "white"},
         }
     )
