@@ -15,7 +15,7 @@ menu_pages = {
 }
 
 def main():
-    # Horizontal menu
+    # Horizontal menu with original red hover and white text effect
     selected = option_menu(
         menu_title=None,
         options=menu_items,
@@ -24,10 +24,10 @@ def main():
         default_index=0,
         orientation="horizontal",
         styles={
-            "container": {"padding": "0!important", "background-color": "#f8f9fa"},
-            "icon": {"color": "orange", "font-size": "20px"},
-            "nav-link": {"font-size": "18px", "text-align": "center", "margin": "0px", "--hover-color": "#eee"},
-            "nav-link-selected": {"background-color": "#02ab21"},
+            "container": {"padding": "0!important", "background-color": "#FFFFFF"},
+            "icon": {"color": "black", "font-size": "20px"},
+            "nav-link": {"font-size": "18px", "text-align": "center", "margin": "0px", "--hover-color": "#ff0000"},
+            "nav-link-selected": {"background-color": "#ff0000", "color": "white"},
         }
     )
 
