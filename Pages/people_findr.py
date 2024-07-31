@@ -14,12 +14,11 @@ def app():
     data = load_data('data/people_findr_data.parquet')
     data_sampled = sample_data(data, fraction=0.5)
     
-    # Ensure all column names are in lowercase
-    data_sampled.columns = [col.lower() for col in data_sampled.columns]
+    # Standardize column names: lowercase and replace spaces with underscores
+    data_sampled.columns = [col.lower().replace(' ', '_') for col in data_sampled.columns]
 
     st.sidebar.header("I want to understand People")
     
-    # Multiselects for filtering
     kind_of_person = st.sidebar.multiselect("Kind of Person", data_sampled['kind_of_person'].dropna().unique(), help="Who they are - Kind of Person")
     true_colors = st.sidebar.multiselect("True Colors", data_sampled['true_colors'].dropna().unique(), help="What they think - True Colors")
     their_reactions = st.sidebar.multiselect("Their Reactions", data_sampled['their_reactions'].dropna().unique(), help="What they think - Their Reactions")
