@@ -17,7 +17,7 @@ def app():
     # Standardize column names: lowercase and replace spaces with underscores
     data_sampled.columns = [col.lower().replace(' ', '_') for col in data_sampled.columns]
 
-    # Print the columns to debug
+    # Debugging: Print the columns to check
     st.write(data_sampled.columns.tolist())
 
     st.sidebar.header("I want to understand People")
@@ -80,4 +80,48 @@ def app():
                 "<b>Marital Status:</b> {marstat}<br/>"
                 "<b>Education:</b> {educ}<br/>"
                 "<b>Employment:</b> {employ}<br/>"
-           
+                "<b>Gender:</b> {gender}<br/>"
+                "<b>Kind of Person:</b> {kind_of_person}<br/>"
+                "<b>True Colors:</b> {true_colors}<br/>"
+                "<b>Their Reactions:</b> {their_reactions}<br/>"
+                "<b>How to Connect:</b> {how_to_connect}<br/>"
+                "<b>What they’re into:</b> {what_theyre_into}<br/>"
+                "<b>How They Feel:</b> {how_they_feel}<br/>"
+                "<b>How you hook them:</b> {how_you_hook_them}<br/>",
+        "style": {
+            "backgroundColor": "steelblue",
+            "color": "white"
+        }
+    }
+    
+    layer = pdk.Layer(
+        "ScatterplotLayer",
+        filtered_data,
+        pickable=True,
+        opacity=0.8,
+        filled=True,
+        radius_scale=10,
+        radius_min_pixels=5,
+        radius_max_pixels=100,
+        get_position=["lon", "lat"],
+        get_fill_color=[255, 0, 0],
+        get_radius=200,
+    )
+
+    view_state = pdk.ViewState(
+        latitude=filtered_data["lat"].mean(),
+        longitude=filtered_data["lon"].mean(),
+        zoom=8,
+        pitch=0,
+    )
+
+    r = pdk.Deck(
+        layers=[layer],
+        initial_view_state=view_state,
+        tooltip=tooltip
+    )
+
+    st.pydeck_chart(r)
+
+if __name__ == "__main__":
+    app()
