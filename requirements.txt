@@ -6,10 +6,12 @@
 #
 altair==5.3.0
     # via streamlit
-attrs==23.2.0
+attrs==24.2.0
     # via
     #   jsonschema
     #   referencing
+beautifulsoup4==4.12.3
+    # via favicon
 blinker==1.8.2
     # via streamlit
 cachecontrol==0.14.0
@@ -20,20 +22,32 @@ cachetools==5.4.0
     #   streamlit
 certifi==2024.7.4
     # via requests
-cffi==1.16.0
+cffi==1.17.0
     # via cryptography
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
     # via streamlit
+contourpy==1.2.1
+    # via matplotlib
 cramjam==2.8.3
     # via fastparquet
 cryptography==43.0.0
     # via pyjwt
+cycler==0.12.1
+    # via matplotlib
+entrypoints==0.4
+    # via streamlit-extras
+faker==26.2.0
+    # via streamlit-faker
 fastparquet==2024.5.0
     # via -r requirements.in
+favicon==0.7.0
+    # via markdownlit
 firebase-admin==6.5.0
     # via -r requirements.in
+fonttools==4.53.1
+    # via matplotlib
 fsspec==2024.6.1
     # via fastparquet
 gitdb==4.0.11
@@ -47,7 +61,7 @@ google-api-core[grpc]==2.19.1
     #   google-cloud-core
     #   google-cloud-firestore
     #   google-cloud-storage
-google-api-python-client==2.139.0
+google-api-python-client==2.140.0
     # via firebase-admin
 google-auth==2.32.0
     # via
@@ -77,12 +91,17 @@ googleapis-common-protos==1.63.2
     # via
     #   google-api-core
     #   grpcio-status
-grpcio==1.65.1
+grpcio==1.65.4
     # via
     #   google-api-core
     #   grpcio-status
-grpcio-status==1.62.2
+grpcio-status==1.62.3
     # via google-api-core
+htbuilder==0.6.2
+    # via
+    #   markdownlit
+    #   st-annotated-text
+    #   streamlit-extras
 httplib2==0.22.0
     # via
     #   google-api-python-client
@@ -93,22 +112,41 @@ jinja2==3.1.4
     # via
     #   altair
     #   pydeck
+    #   streamlit-camera-input-live
+    #   streamlit-image-coordinates
+    #   streamlit-keyup
 jsonschema==4.23.0
     # via altair
 jsonschema-specifications==2023.12.1
     # via jsonschema
+kiwisolver==1.4.5
+    # via matplotlib
+lxml==5.2.2
+    # via markdownlit
+markdown==3.6
+    # via
+    #   markdownlit
+    #   pymdown-extensions
 markdown-it-py==3.0.0
     # via rich
+markdownlit==0.0.7
+    # via streamlit-extras
 markupsafe==2.1.5
     # via jinja2
+matplotlib==3.9.1.post1
+    # via streamlit-faker
 mdurl==0.1.2
     # via markdown-it-py
+more-itertools==10.3.0
+    # via htbuilder
 msgpack==1.0.8
     # via cachecontrol
 numpy==2.0.1
     # via
     #   altair
+    #   contourpy
     #   fastparquet
+    #   matplotlib
     #   pandas
     #   pyarrow
     #   pydeck
@@ -117,6 +155,7 @@ packaging==24.1
     # via
     #   altair
     #   fastparquet
+    #   matplotlib
     #   streamlit
 pandas==2.2.2
     # via
@@ -125,7 +164,11 @@ pandas==2.2.2
     #   fastparquet
     #   streamlit
 pillow==10.4.0
-    # via streamlit
+    # via
+    #   matplotlib
+    #   streamlit
+prometheus-client==0.20.0
+    # via streamlit-extras
 proto-plus==1.24.0
     # via
     #   google-api-core
@@ -138,6 +181,7 @@ protobuf==4.25.4
     #   grpcio-status
     #   proto-plus
     #   streamlit
+    #   streamlit-extras
 pyarrow==17.0.0
     # via streamlit
 pyasn1==0.6.0
@@ -154,14 +198,23 @@ pydeck==0.9.1
     #   streamlit
 pygments==2.18.0
     # via rich
-pyjwt[crypto]==2.8.0
+pyjwt[crypto]==2.9.0
     # via firebase-admin
+pymdown-extensions==10.9
+    # via markdownlit
 pyparsing==3.1.2
-    # via httplib2
+    # via
+    #   httplib2
+    #   matplotlib
 python-dateutil==2.9.0.post0
-    # via pandas
+    # via
+    #   faker
+    #   matplotlib
+    #   pandas
 pytz==2024.1
     # via pandas
+pyyaml==6.0.2
+    # via pymdown-extensions
 referencing==0.35.1
     # via
     #   jsonschema
@@ -169,12 +222,13 @@ referencing==0.35.1
 requests==2.32.3
     # via
     #   cachecontrol
+    #   favicon
     #   google-api-core
     #   google-cloud-storage
     #   streamlit
 rich==13.7.1
     # via streamlit
-rpds-py==0.19.1
+rpds-py==0.20.0
     # via
     #   jsonschema
     #   referencing
@@ -184,12 +238,50 @@ six==1.16.0
     # via python-dateutil
 smmap==5.0.1
     # via gitdb
+soupsieve==2.5
+    # via beautifulsoup4
+st-annotated-text==4.0.1
+    # via streamlit-extras
+st-theme==1.2.3
+    # via streamlit-extras
 streamlit==1.37.0
     # via
     #   -r requirements.in
+    #   markdownlit
+    #   st-theme
+    #   streamlit-camera-input-live
+    #   streamlit-card
+    #   streamlit-embedcode
+    #   streamlit-extras
+    #   streamlit-faker
+    #   streamlit-image-coordinates
+    #   streamlit-keyup
     #   streamlit-option-menu
+    #   streamlit-toggle-switch
+    #   streamlit-vertical-slider
+streamlit-camera-input-live==0.2.0
+    # via streamlit-extras
+streamlit-card==1.0.2
+    # via streamlit-extras
+streamlit-embedcode==0.1.2
+    # via streamlit-extras
+streamlit-extras==0.4.3
+    # via
+    #   -r requirements.in
+    #   markdownlit
+    #   streamlit-faker
+streamlit-faker==0.0.3
+    # via streamlit-extras
+streamlit-image-coordinates==0.1.9
+    # via streamlit-extras
+streamlit-keyup==0.2.4
+    # via streamlit-extras
 streamlit-option-menu==0.3.13
     # via -r requirements.in
+streamlit-toggle-switch==1.0.2
+    # via streamlit-extras
+streamlit-vertical-slider==2.5.5
+    # via streamlit-extras
 tenacity==8.5.0
     # via streamlit
 toml==0.10.2
@@ -208,5 +300,7 @@ uritemplate==4.1.1
     # via google-api-python-client
 urllib3==2.2.2
     # via requests
+validators==0.33.0
+    # via streamlit-extras
 watchdog==4.0.1
     # via streamlit

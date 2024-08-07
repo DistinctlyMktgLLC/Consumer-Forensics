@@ -1,6 +1,7 @@
 import streamlit as st
 from modules.data_loader import load_data
 import pydeck as pdk
+from layout import render_layout
 
 def sample_data(data, fraction=0.5):
     """Sample a cross-section of the data"""
@@ -121,4 +122,4 @@ def app():
     st.pydeck_chart(r)
 
 if __name__ == "__main__":
-    app()
+    render_layout(app)

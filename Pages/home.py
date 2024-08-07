@@ -1,4 +1,5 @@
 import streamlit as st
+from layout import render_layout
 
 def show_home():
     st.title("Neighborhood Insights Dashboard - Overview")
@@ -22,3 +23,6 @@ def show_home():
     **Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).
     """)
     st.markdown("Dashboard powered by Distinct.ly. Data last updated: July 23 2024 1:05 pm EST")
+
+if __name__ == "__main__":
+    render_layout(show_home)
