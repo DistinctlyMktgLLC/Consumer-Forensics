@@ -7,7 +7,7 @@ def sample_data(data, fraction=0.5):
     return data.sample(frac=fraction, random_state=1)
 
 def app():
-    st.title("Business Explorer")
+    st.title("Business ExploR")
     st.write("**Note:** This represents only a portion of the available data. For full access, contact [darnel.m@distinctlymktg.com](mailto:darnel.m@distinctlymktg.com).")
     
     # Load and sample data
