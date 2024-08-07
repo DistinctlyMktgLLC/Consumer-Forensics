@@ -3,13 +3,13 @@ from streamlit_option_menu import option_menu
 from Pages import home, people_findr, neighborhood_viewr, business_explor
 
 # Define the menu items and corresponding pages
-menu_items = ["Home", "People FindR", "Neighborhood ViewR", "Business ExploR"]
+menu_items = ["Home", "People", "Neighborhood", "Business"]
 menu_icons = ['house', 'person-bounding-box', 'search-heart', 'buildings']
 menu_pages = {
     "Home": home.show_home,
-    "People FindR": people_findr.app,
-    "Neighborhood ViewR": neighborhood_viewr.app,
-    "Business ExploR": business_explor.app
+    "People": people_findr.app,
+    "Neighborhood": neighborhood_viewr.app,
+    "Business": business_explor.app
 }
 
 def render_layout(page_function):
@@ -36,7 +36,7 @@ def render_layout(page_function):
                 "margin": "0px", 
                 "--hover-color": "#ff0000",
                 "color": "black",
-                "padding": "15px 30px",  # Increased padding for wider appearance
+                "padding": "15px 20px",  # Adjusted padding
                 "flex-grow": "1",
                 "white-space": "nowrap",  # Prevents text wrapping
                 "display": "flex",
