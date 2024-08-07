@@ -16,7 +16,7 @@ def onboarding_screen():
     st.title("Welcome to the App!")
     
     # Section 1
-    with st.expander("This section allows you to filter the data you want to see, think of it as your way to build a story"):
+    with st.expander("This section allows you to filter the data you want to see, think of it as your way to build the story you want to see"):
         st.markdown("""
         - **Field 1:** Ask your questions.
         - **Field 2:** See scenarios.
@@ -79,7 +79,8 @@ def render_layout(page_function):
     )
 
     # Display the selected page
-    menu_pages[selected]()
-
-    # Render the specific page function
+    page_function = menu_pages[selected]
     page_function()
+
+if __name__ == "__main__":
+    render_layout(lambda: st.write("Select a page from the menu above."))
