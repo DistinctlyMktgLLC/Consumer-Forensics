@@ -1,22 +1,11 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from Pages import home, people_findr, neighborhood_viewr, business_explor
-
-# Define the menu items and corresponding pages
-menu_items = ["Home", "People FindR", "Neighborhood ViewR", "Business ExploR"]
-menu_icons = ['house', 'person-bounding-box', 'search-heart', 'buildings']
-menu_pages = {
-    "Home": home.show_home,
-    "People FindR": people_findr.app,
-    "Neighborhood ViewR": neighborhood_viewr.app,
-    "Business ExploR": business_explor.app
-}
 
 def onboarding_screen():
     st.title("Welcome to the App!")
     
     # Section 1
-    with st.expander("This section allows you to filter the data you want to see, think of it as your way to build the story you want to see"):
+    with st.expander("This section allows you to filter the data you want to see, think of it as your way to build a story"):
         st.markdown("""
         - **Field 1:** Ask your questions.
         - **Field 2:** See scenarios.
@@ -43,6 +32,19 @@ def render_layout(page_function):
             st.session_state.onboarding_done = True
             st.experimental_rerun()
         return
+
+    # Importing here to avoid circular dependencies
+    from Pages import home, people_findr, neighborhood_viewr, business_explor
+    
+    # Define the menu items and corresponding pages
+    menu_items = ["Home", "People FindR", "Neighborhood ViewR", "Business ExploR"]
+    menu_icons = ['house', 'person-bounding-box', 'search-heart', 'buildings']
+    menu_pages = {
+        "Home": home.show_home,
+        "People FindR": people_findr.app,
+        "Neighborhood ViewR": neighborhood_viewr.app,
+        "Business ExploR": business_explor.app
+    }
 
     # Horizontal menu with custom styling for even spacing and color changes
     selected = option_menu(
@@ -81,6 +83,3 @@ def render_layout(page_function):
     # Display the selected page
     page_function = menu_pages[selected]
     page_function()
-
-if __name__ == "__main__":
-    render_layout(lambda: st.write("Select a page from the menu above."))
